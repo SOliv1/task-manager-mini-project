@@ -3,6 +3,7 @@
     <head>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet"  href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+    <title>Mini Project</title>
     </head>
     <body>
     
@@ -14,6 +15,15 @@
             $(document).ready(function() {
                 $('.collapsible').collapsible();
             })
+
+            $('.datepicker').pickadate({
+            selectMonths: true, // Creates a dropdown to control month
+            selectYears: 15, // Creates a dropdown of 15 years to control year,
+            today: 'Today',
+            clear: 'Clear',
+            close: 'Ok',
+            closeOnSelect: false // Close upon selecting a date,
+            });
         </script>
     </body>
 </html>
