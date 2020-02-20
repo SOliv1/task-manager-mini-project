@@ -30,9 +30,32 @@ def add_task():
 def insert_task():
     tasks = mongo.db.tasks
     tasks.insert_one(request.form.to_dict())
-    return redirect(url_for('get_tasks'))    
+    return redirect(url_for('get_tasks'))  
 
-    
+
+@app.route('/edit_task/<task_id>')
+def edit_task(task_id):
+    the_task = mongo.db.tasks.find_one({"_id": ObjectId(task_id)})
+    all_categories = mongo.db.categories.find()
+    return render_template('edittask.html', task=the_task,
+                           categories=all_categories)
+
+
+@app.route('/update_task/<task_id>', methods=["POST"])
+def update_task(task_id):
+    tasks = mongo.db.tasks
+    tasks.update( {'_id': ObjectId(task_id)},
+
+    {
+        'task_name':request.form.get('task_name'),
+        'category_name':request.form.get('category_name'),
+        'task_description': request.form.get('task_description'),
+        'due_date': request.form.get('due_date'),
+        'is_urgent': request.form.get('is_urgent')
+    })
+    return redirect(url_for('get_tasks'))  
+
+
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
             port=int(os.environ.get('PORT')),
