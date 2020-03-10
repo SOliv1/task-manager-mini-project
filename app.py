@@ -5,7 +5,7 @@ from bson.objectid import ObjectId
 from os import path
 
 if path.exists("env.py"):
-    import env
+    import env as config
 
 
 app = Flask(__name__)
@@ -46,13 +46,13 @@ def edit_task(task_id):
 @app.route('/update_task/<task_id>', methods=["POST"])
 def update_task(task_id):
     tasks = mongo.db.tasks
-    tasks.update( {'_id': ObjectId(task_id)},
+    tasks.update({'_id': ObjectId(task_id)},
     {
-        'task_name':request.form.get('task_name'),
-        'category_name':request.form.get('category_name'),
+        'task_name': request.form.get('task_name'),
+        'category_name': request.form.get('category_name'),
         'task_description': request.form.get('task_description'),
         'due_date': request.form.get('due_date'),
-        'is_urgent':request.form.get('is_urgent')
+        'is_urgent': request.form.get('is_urgent')
     })
     return redirect(url_for('get_tasks'))
 
