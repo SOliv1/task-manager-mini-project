@@ -1,5 +1,6 @@
 <img src="https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png" style="margin: 0;">
 
+[![Jekyll site CI](https://github.com/SOliv1/putting-it-altogether-mini-project/actions/workflows/jekyll-docker.yml/badge.svg)](https://github.com/SOliv1/putting-it-altogether-mini-project/actions/workflows/jekyll-docker.yml)
 * ## Task Manager 
 View deployed site on Heroku [HERE](https://flask-mongo-task.herokuapp.com/)
 
